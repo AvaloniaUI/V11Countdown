@@ -21,7 +21,7 @@ public partial class MainViewModel : ViewModelBase
     void Tick()
     {
         
-        var targetTime = DateTimeOffset.Parse("07/05/2023 12:30:00 PM +02:00").UtcDateTime;
+        var targetTime = new DateTimeOffset(2023, 07, 05, 12,0,0, TimeSpan.Zero);
         var currentTime = DateTimeOffset.Now.UtcDateTime;
         var remTime = targetTime - currentTime;
 

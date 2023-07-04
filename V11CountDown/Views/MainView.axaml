@@ -77,7 +77,7 @@
         <Panel>
             <Viewbox ClipToBounds="False" VerticalAlignment="Center" HorizontalAlignment="Center" Width="870" Height="400">
                 
-                <TextBlock  ClipToBounds="False" TextAlignment="Center" IsVisible="{Binding !TimesUp}">
+                <TextBlock Foreground="White"  ClipToBounds="False" TextAlignment="Center" IsVisible="{Binding !TimesUp}">
                     <Run FontFamily="{DynamicResource Nunito}" FontSize="20" Text="New Release Dropping In"/>
                     <LineBreak/>
                     <Run FontFamily="{DynamicResource Nunito}" FontWeight="Bold" FontSize="70" Text="{Binding TimeRemaining}"/>
