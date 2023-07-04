@@ -8,7 +8,7 @@ namespace V11CountDown.ViewModels;
 public partial class MainViewModel : ViewModelBase
 {
     [ObservableProperty] private string _timeRemaining;
-    [ObservableProperty] private bool _countdownNowVisible; // Adds some sweet effect when users vists after the countdown is already finished.
+    [ObservableProperty] private bool _countdownNowVisible; // Adds some sweet effect when users visits after the countdown is already finished.
     [ObservableProperty] private bool _timesUp;
     
     public MainViewModel()
