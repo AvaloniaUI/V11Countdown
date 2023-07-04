@@ -1,8 +1,7 @@
 ﻿using System.Runtime.Versioning;
 using System.Threading.Tasks;
 using Avalonia;
-using Avalonia.Browser;
-using Avalonia.ReactiveUI;
+using Avalonia.Browser; 
 using V11CountDown;
 
 [assembly: SupportedOSPlatform("browser")]
@@ -10,8 +9,7 @@ using V11CountDown;
 internal partial class Program
 {
     private static async Task Main(string[] args) => await BuildAvaloniaApp()
-            .WithInterFont()
-            .UseReactiveUI()
+            .WithInterFont() 
             .StartBrowserAppAsync("out");
 
     public static AppBuilder BuildAvaloniaApp()
