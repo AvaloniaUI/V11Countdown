@@ -76,10 +76,10 @@
                     <Border Grid.Row="1" Background="#8B44AC"/>
                 </Grid>
         
-                <Panel>
-                    <Viewbox ClipToBounds="False" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="50 0">
+                <Panel >
+                    <Viewbox ClipToBounds="False" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="50 0" MaxWidth="1000">
                 
-                        <TextBlock HorizontalAlignment="Left" Foreground="White"  ClipToBounds="False" TextAlignment="Center" IsVisible="{Binding !TimesUp}">
+                        <TextBlock MaxWidth="600" HorizontalAlignment="Left" Foreground="White"  ClipToBounds="False" TextAlignment="Center" IsVisible="{Binding !TimesUp}">
                             <Run FontFamily="{DynamicResource Nunito}" FontSize="20" Text="New Release Dropping In"/>
                             <LineBreak/>
                             <Run FontFamily="{DynamicResource Nunito}" FontWeight="Bold" FontSize="70" Text="{Binding TimeRemaining}"/>
