@@ -1,7 +1,6 @@
 ﻿using System;
 using Avalonia;
-using Avalonia.ReactiveUI;
-
+ 
 namespace V11CountDown.Desktop;
 
 class Program
@@ -18,6 +17,5 @@ class Program
         => AppBuilder.Configure<App>()
             .UsePlatformDetect()
             .WithInterFont()
-            .LogToTrace()
-            .UseReactiveUI();
+            .LogToTrace();
 }
