@@ -15,13 +15,14 @@
     <Panel Background="#161C2D">
         <Panel.Resources>
             <FontFamily x:Key="Nunito">/Assets/Fonts/*.ttf#Nunito</FontFamily>
-        </Panel.Resources> 
+        </Panel.Resources>
         <Panel.Styles>
             <Style Selector="Panel.wave">
                 <Setter Property="Background">
                     <VisualBrush AlignmentY="Bottom" TileMode="FlipX" DestinationRect="0,0,1600,198">
                         <VisualBrush.Visual>
-                            <Path Data="F0 M0.005 121C311 121 409.898 -0.25 811 0C1211 0 1311 121 1600 121L1600 198L0 198C0 198 0.005 150 0.005 121Z">
+                            <Path
+                                Data="F0 M0.005 121C311 121 409.898 -0.25 811 0C1211 0 1311 121 1600 121L1600 198L0 198C0 198 0.005 150 0.005 121Z">
                                 <Path.Fill>
                                     <LinearGradientBrush StartPoint="0.5,-0.109589994" EndPoint="0.5,1">
                                         <LinearGradientBrush.GradientStops>
@@ -55,6 +56,22 @@
                 </Style.Animations>
             </Style>
 
+
+            <Style Selector="Panel.wave1.timesUp">
+                <Setter Property="Opacity" Value="0.5"></Setter>
+                <Style.Animations>
+                    <Animation Duration="0:0:7" SpeedRatio="0.4" IterationCount="Infinite"
+                               Easing="0.36, 0.45, 0.63, 0.53">
+                        <KeyFrame Cue="0%">
+                            <Setter Property="(TranslateTransform.X)" Value="0" />
+                        </KeyFrame>
+                        <KeyFrame Cue="100%">
+                            <Setter Property="(TranslateTransform.X)" Value="-1600" />
+                        </KeyFrame>
+                    </Animation>
+                </Style.Animations>
+            </Style>
+
             <Style Selector="Panel.wave2">
                 <Style.Animations>
                     <Animation Duration="0:0:7.2" IterationCount="Infinite" Easing="0.36, 0.45, 0.63, 0.53">
@@ -67,29 +84,108 @@
                     </Animation>
                 </Style.Animations>
             </Style>
+
+            <Style Selector="Panel.wave2.timesUp">
+                <Style.Animations>
+                    <Animation Duration="0:0:7.2" SpeedRatio="0.4" IterationCount="Infinite"
+                               Easing="0.36, 0.45, 0.63, 0.53">
+                        <KeyFrame Cue="0%">
+                            <Setter Property="(TranslateTransform.X)" Value="-0" />
+                        </KeyFrame>
+                        <KeyFrame Cue="100%">
+                            <Setter Property="(TranslateTransform.X)" Value="-1600" />
+                        </KeyFrame>
+                    </Animation>
+                </Style.Animations>
+            </Style>
+
+
+            <Style Selector="Border.ocean">
+                <Setter Property="Height" Value="10" />
+                <Setter Property="Transitions">
+                    <Transitions>
+                        <DoubleTransition Duration="0:0:8" Easing="CircularEaseOut" Property="Height" />
+                    </Transitions>
+                </Setter>
+            </Style>
+
+            <Style Selector="Border.ocean.timesUp">
+                <Setter Property="Height" Value="500" />
+            </Style>
+
+            <Style Selector="Viewbox.final">
+                <Setter Property="Opacity" Value="0" />
+                <Setter Property="RenderTransform" Value="scaleX(0.85) scaleY(0.85)" />
+                <Setter Property="Transitions">
+                    <Transitions>
+                        <TransformOperationsTransition Delay="0:0:1" Property="RenderTransform" Duration="0:0:1"
+                                                       Easing="CubicEaseIn" />
+                        <DoubleTransition Delay="0:0:1" Duration="0:0:0.8" Easing="QuadraticEaseOut" Property="Opacity" />
+                    </Transitions>
+                </Setter>
+            </Style>
+
+            <Style Selector="Viewbox.final.timesUp">
+                <Setter Property="Opacity" Value="1" />
+                <Setter Property="RenderTransform" Value="scaleX(1) scaleY(1)" />
+            </Style>
+
+            <Style Selector="Viewbox.countDown">
+                <Setter Property="Opacity" Value="1" />
+                <Setter Property="Transitions">
+                    <Transitions>
+                        <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.75"
+                                                       Easing="CubicEaseOut" />
+                        <DoubleTransition Duration="0:0:0.5" Easing="QuadraticEaseIn" Property="Opacity" />
+                    </Transitions>
+                </Setter>
+            </Style>
+
+            <Style Selector="Viewbox.countDown.timesUp">
+                <Setter Property="Opacity" Value="0" />
+                <Setter Property="RenderTransform" Value="scaleX(0.7) scaleY(0.7)" />
+            </Style>
+
         </Panel.Styles>
-        
-            <Panel>
-                <Grid RowDefinitions="100*,5*">
-                    <Panel Classes="wave wave1" Grid.RowSpan="1" />
-                    <Panel Classes="wave wave2" Grid.RowSpan="1" />
-                    <Border Grid.Row="1" Background="#8B44AC"/>
-                </Grid>
-        
-                <Panel >
-                    <Viewbox ClipToBounds="False" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="50 0" MaxWidth="1000">
-                
-                        <TextBlock MaxWidth="600" HorizontalAlignment="Left" Foreground="White"  ClipToBounds="False" TextAlignment="Center" IsVisible="{Binding !TimesUp}">
-                            <Run FontFamily="{DynamicResource Nunito}" FontSize="20" Text="New Release Dropping In"/>
-                            <LineBreak/>
-                            <Run FontFamily="{DynamicResource Nunito}" FontWeight="Bold" FontSize="70" Text="{Binding TimeRemaining}"/>
+
+        <Panel>
+            <Grid RowDefinitions="*,Auto">
+                <Panel Classes="wave wave1" Classes.timesUp="{Binding TimesUp}" Grid.RowSpan="1" />
+                <Panel Classes="wave wave2" Classes.timesUp="{Binding TimesUp}" Grid.RowSpan="1" />
+                <Border Classes="ocean" Classes.timesUp="{Binding TimesUp}" Grid.Row="1" Background="#8B44AC" />
+            </Grid>
+
+            <Panel TextElement.FontFamily="{DynamicResource Nunito}" TextElement.Foreground="White">
+                <Viewbox Classes="countDown" Classes.timesUp="{Binding TimesUp}" ClipToBounds="False" IsVisible="{Binding CountdownNowVisible}"
+                         VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="50 0" MaxWidth="1000">
+                    <TextBlock MaxWidth="600" HorizontalAlignment="Left" Foreground="White" ClipToBounds="False"
+                               TextAlignment="Center">
+                        <Run FontSize="20" Text="New Release Dropping In" />
+                        <LineBreak />
+                        <Run FontWeight="Bold" FontSize="70" Text="{Binding TimeRemaining}" />
+                    </TextBlock>
+                </Viewbox>
+
+                <Viewbox Classes="final" Classes.timesUp="{Binding TimesUp}" VerticalAlignment="Center"
+                         HorizontalAlignment="Center" Margin="50 0" MaxWidth="900" MaxHeight="500">
+                    <DockPanel>
+                        <TextBlock FontSize="80" TextWrapping="Wrap" DockPanel.Dock="Bottom">
+                            <Run>Avalonia 11 is now</Run>
+                            <Run FontWeight="SemiBold" TextDecorations="Underline">available!</Run>
                         </TextBlock>
-                    </Viewbox>
-                    <Panel IsVisible="{Binding TimesUp}">
-                
-                    </Panel>
-                </Panel>
+                        <Image Margin="60">
+                            <DrawingImage>
+                                <DrawingGroup> 
+                                    <GeometryDrawing Brush="#FFF9F9FB"
+                                                     Geometry="M 115.89453 0.34570312 A 123.2 123.2 0 0 0 121.09961 246.5 L 215 246.5 L 216.5 246.5 A 30 30 0 0 0 246.30078 220 L 246.5 120 A 123.2 123.2 0 0 0 115.89453 0.34570312 z M 123.69922 42 A 81.2 81.2 0 0 1 205 123.19922 L 205 203.90039 L 162.59961 203.90039 L 162.59961 194.5 A 81.3 81.3 0 0 1 44.400391 140.90039 A 18.4 18.4 0 0 0 44.400391 105.5 A 81.3 81.3 0 0 1 123.69922 42 z M 123.18164 82.228516 A 39 39 0 0 0 119.44336 82.453125 A 39 39 0 0 0 84.699219 123.19922 L 84.800781 123.19922 A 39 39 0 0 0 162.59961 123.19922 A 39 39 0 0 0 123.18164 82.228516 z M 38.029297 110.23633 A 13 13 0 0 1 52 123.19922 A 13 13 0 0 1 26 123.19922 A 13 13 0 0 1 38.029297 110.23633 z " />
+                          
+                                </DrawingGroup>
+                            </DrawingImage>
+                        </Image>
+                    </DockPanel>
+                </Viewbox>
             </Panel>
-        
+        </Panel>
+
     </Panel>
 </UserControl>
