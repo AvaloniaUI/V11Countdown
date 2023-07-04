@@ -68,24 +68,28 @@
                 </Style.Animations>
             </Style>
         </Panel.Styles>
-        <Grid RowDefinitions="100*,5*">
-            <Panel Classes="wave wave1" Grid.RowSpan="1" />
-            <Panel Classes="wave wave2" Grid.RowSpan="1" />
-            <Border Grid.Row="1" Background="#8B44AC"/>
-        </Grid>
         
-        <Panel>
-            <Viewbox ClipToBounds="False" VerticalAlignment="Center" HorizontalAlignment="Center" Width="870" Height="400">
+            <Panel>
+                <Grid RowDefinitions="100*,5*">
+                    <Panel Classes="wave wave1" Grid.RowSpan="1" />
+                    <Panel Classes="wave wave2" Grid.RowSpan="1" />
+                    <Border Grid.Row="1" Background="#8B44AC"/>
+                </Grid>
+        
+                <Panel>
+                    <Viewbox ClipToBounds="False" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="50 0">
                 
-                <TextBlock Foreground="White"  ClipToBounds="False" TextAlignment="Center" IsVisible="{Binding !TimesUp}">
-                    <Run FontFamily="{DynamicResource Nunito}" FontSize="20" Text="New Release Dropping In"/>
-                    <LineBreak/>
-                    <Run FontFamily="{DynamicResource Nunito}" FontWeight="Bold" FontSize="70" Text="{Binding TimeRemaining}"/>
-                </TextBlock>
-            </Viewbox>
-            <Panel IsVisible="{Binding TimesUp}">
+                        <TextBlock HorizontalAlignment="Left" Foreground="White"  ClipToBounds="False" TextAlignment="Center" IsVisible="{Binding !TimesUp}">
+                            <Run FontFamily="{DynamicResource Nunito}" FontSize="20" Text="New Release Dropping In"/>
+                            <LineBreak/>
+                            <Run FontFamily="{DynamicResource Nunito}" FontWeight="Bold" FontSize="70" Text="{Binding TimeRemaining}"/>
+                        </TextBlock>
+                    </Viewbox>
+                    <Panel IsVisible="{Binding TimesUp}">
                 
+                    </Panel>
+                </Panel>
             </Panel>
-        </Panel>
+        
     </Panel>
 </UserControl>

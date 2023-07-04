@@ -9,8 +9,7 @@ using V11CountDown;
 internal partial class Program
 {
     private static async Task Main(string[] args) => await BuildAvaloniaApp()
-            .WithInterFont() 
-            .StartBrowserAppAsync("out");
+        .StartBrowserAppAsync("out");
 
     public static AppBuilder BuildAvaloniaApp()
         => AppBuilder.Configure<App>();
