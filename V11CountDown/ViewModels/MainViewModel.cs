@@ -43,13 +43,12 @@ public partial class MainViewModel : ViewModelBase
         var targetTime = new DateTimeOffset(2023, 07, 05, 12,30,0, TimeSpan.FromHours(2));
         var currentTime = DateTimeOffset.Now.UtcDateTime;
         var remTime = targetTime - currentTime;
-
         
-        if (st.Elapsed.TotalSeconds > 2)
-        {
-            TimesUp = true;
-            return;
-        }
+        // if (st.Elapsed.TotalSeconds > 2)
+        // {
+        //     TimesUp = true;
+        //     return;
+        // }
         
         if (remTime.TotalSeconds <= 0)
         {
