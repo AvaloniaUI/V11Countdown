@@ -17,7 +17,6 @@
     
     <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
     <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="$(AvaloniaVersion)" />
-    <PackageReference Include="CommunityToolkit.Mvvm" Version="*"/>
-    <PackageReference Include="System.Reactive" Version="*"/>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="*" />
   </ItemGroup>
 </Project>

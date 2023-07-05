@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Diagnostics;
-using System.Reactive.Linq;
+using Avalonia.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace V11CountDown.ViewModels;
@@ -13,13 +12,10 @@ public partial class MainViewModel : ViewModelBase
     
     public MainViewModel()
     {
-        Observable.Interval(TimeSpan.FromSeconds(0.5)).Subscribe(x =>
-        {
-            Tick();
-        });
+        _ = new DispatcherTimer(TimeSpan.FromSeconds(0.5), DispatcherPriority.Background, Tick);
     }
 
-    void Tick()
+    void Tick(object? sender, EventArgs eventArgs)
     {
         // Corrected to UTC+2 July 5 2023 12 and a half noon   
         var targetTime = new DateTimeOffset(2023, 07, 05, 12,30,0, TimeSpan.FromHours(2));
