@@ -171,7 +171,11 @@
                     <DockPanel>
                         <TextBlock FontSize="80" TextWrapping="Wrap" DockPanel.Dock="Bottom">
                             <Run>Avalonia 11 is now</Run>
-                            <Run FontWeight="SemiBold" TextDecorations="Underline">available!</Run>
+                            <InlineUIContainer>
+                                <Panel x:Name="LaunchPanel" Background="Transparent" Cursor="Hand">
+                                    <TextBlock FontWeight="SemiBold" TextDecorations="Underline">available</TextBlock>
+                                </Panel> 
+                            </InlineUIContainer><Run>!</Run>
                         </TextBlock>
                         <Image Margin="60">
                             <DrawingImage>
@@ -186,6 +190,5 @@
                 </Viewbox>
             </Panel>
         </Panel>
-
     </Panel>
 </UserControl>
